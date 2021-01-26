@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import QuizBox from './QuizBox';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const App = () => {
+  return (
+    <div className="ui container">
+      <div className="ui raised container very padded text segment">
+        <div className="ui container">
+          <QuizBox />
+          <div className="ui divider"></div>
+          <QuizBox />
+          <div className="ui divider"></div>
+          <QuizBox />
+          <div className="ui divider"></div>
+          <QuizBox />
+          <div className="ui divider"></div>
+          <QuizBox />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
