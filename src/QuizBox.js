@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { unescape } from 'lodash';
+import { unescape } from 'html-escaper';
 
 import Question from './Question';
 import Options from './Options';
