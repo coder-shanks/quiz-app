@@ -9,6 +9,8 @@ let question = '';
 let answers = [];
 let correctIndex = 0;
 
+const API_URL = 'https://opentdb.com/api.php?amount=1&type=multiple';
+
 class QuizBox extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ class QuizBox extends React.Component {
       errorData: {},
     };
 
-    axios.get('https://opentdb.com/api.php?amount=1&type=multiple').then(
+    axios.get(API_URL).then(
       (successData) => {
         question = successData.data.results.map((loadedQuestion) => {
           answers = [...loadedQuestion.incorrect_answers];
