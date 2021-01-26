@@ -20,29 +20,27 @@ class QuizBox extends React.Component {
       errorData: {},
     };
 
-    axios
-      .get('https://opentdb.com/api.php?amount=1&category=18&type=multiple')
-      .then(
-        (successData) => {
-          question = successData.data.results.map((loadedQuestion) => {
-            answers = [...loadedQuestion.incorrect_answers];
-            let randomIndex = Math.floor(Math.random() * 3);
-            correctIndex = randomIndex;
-            answers.splice(randomIndex, 0, loadedQuestion.correct_answer);
-            this.setState({
-              answerData: answers,
-              correctAnswer: loadedQuestion.correct_answer,
-            });
-            return loadedQuestion.question;
+    axios.get('https://opentdb.com/api.php?amount=1&type=multiple').then(
+      (successData) => {
+        question = successData.data.results.map((loadedQuestion) => {
+          answers = [...loadedQuestion.incorrect_answers];
+          let randomIndex = Math.floor(Math.random() * 3);
+          correctIndex = randomIndex;
+          answers.splice(randomIndex, 0, loadedQuestion.correct_answer);
+          this.setState({
+            answerData: answers,
+            correctAnswer: loadedQuestion.correct_answer,
           });
+          return loadedQuestion.question;
+        });
 
-          this.setState({ question: question.toString() });
-        },
-        (errorData) => {
-          console.log(errorData);
-          this.setState({ errorData: errorData });
-        }
-      );
+        this.setState({ question: question.toString() });
+      },
+      (errorData) => {
+        console.log(errorData);
+        this.setState({ errorData: errorData });
+      }
+    );
   }
 
   render() {
