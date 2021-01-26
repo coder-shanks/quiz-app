@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { unescape } from 'html-escaper';
 
 import Question from './Question';
 import Options from './Options';
@@ -48,7 +47,7 @@ class QuizBox extends React.Component {
   render() {
     if (this.state.question !== '') {
       return (
-        <Question que={unescape(this.state.question)}>
+        <Question que={this.state.question}>
           <Options
             choices={this.state.answerData}
             correctChoice={correctIndex}

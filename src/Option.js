@@ -1,18 +1,30 @@
 import React from 'react';
+import { unescape } from 'html-escaper';
 
-const Option = (props) => {
+class Option extends React.Component {
   //Change the button color to green if answer is correct
-  let checkAnswer = (e) => {
-    if (props.correctAnswer === 'true') {
+  checkAnswer = () => {
+    if (this.props.correctAnswer === 'true') {
       document.activeElement.classList.add('green');
+    } else {
+      document.activeElement.classList.add('red');
     }
+
+    document.activeElement.parentElement
+      .querySelectorAll('button')
+      .forEach((btn) => {
+        if (!(btn.classList.contains('green') || btn.classList.contains('red')))
+          btn.disabled = true;
+      });
   };
 
-  return (
-    <button className="fluid ui button large" onClick={checkAnswer}>
-      <div className="item">{props.option}</div>
-    </button>
-  );
-};
+  render() {
+    return (
+      <button className="fluid ui button large" onClick={this.checkAnswer}>
+        <div className="item">{unescape(this.props.option)}</div>
+      </button>
+    );
+  }
+}
 
 export default Option;
