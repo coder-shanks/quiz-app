@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Question from './Question';
 import Options from './Options';
+import Spinner from './Spinner';
 
 let question = '';
 let answers = [];
@@ -55,7 +56,7 @@ class QuizBox extends React.Component {
         </Question>
       );
     }
-    return <div className="ui active centered inline loader"></div>;
+    return <Spinner alignment="centered" />;
   }
 }
 

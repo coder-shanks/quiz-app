@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Option from './Option';
+import Spinner from './Spinner';
 
 let checkCorrectAnswer = (selectedIndex, correctIndex) => {
   return selectedIndex === correctIndex ? 'true' : 'false';
@@ -33,7 +34,7 @@ class Options extends React.Component {
         </div>
       );
     }
-    return <div className="ui active inline loader"></div>;
+    return <Spinner alignment="" />;
   }
 }
 
