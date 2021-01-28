@@ -1,5 +1,5 @@
 import React from 'react';
-import { unescape } from 'html-escaper';
+import { decode } from 'he';
 
 class Option extends React.Component {
   //Change the button color to green if answer is correct
@@ -21,7 +21,7 @@ class Option extends React.Component {
   render() {
     return (
       <button className="fluid ui button large" onClick={this.checkAnswer}>
-        <div className="item">{unescape(this.props.option)}</div>
+        <div className="item">{decode(this.props.option)}</div>
       </button>
     );
   }
