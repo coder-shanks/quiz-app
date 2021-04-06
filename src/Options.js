@@ -9,27 +9,29 @@ let checkCorrectAnswer = (selectedIndex, correctIndex) => {
 
 class Options extends React.Component {
   render() {
-    if (this.props.choices.length > 0) {
+    const { choices, correctChoice } = this.props;
+
+    if (choices.length > 0) {
       return (
         <div className="ui items">
           <Option
-            option={this.props.choices[0]}
-            correctAnswer={checkCorrectAnswer(0, this.props.correctChoice)}
+            option={choices[0]}
+            correctAnswer={checkCorrectAnswer(0, correctChoice)}
           />
           <div className="ui hidden divider"></div>
           <Option
-            option={this.props.choices[1]}
-            correctAnswer={checkCorrectAnswer(1, this.props.correctChoice)}
+            option={choices[1]}
+            correctAnswer={checkCorrectAnswer(1, correctChoice)}
           />
           <div className="ui hidden divider"></div>
           <Option
-            option={this.props.choices[2]}
-            correctAnswer={checkCorrectAnswer(2, this.props.correctChoice)}
+            option={choices[2]}
+            correctAnswer={checkCorrectAnswer(2, correctChoice)}
           />
           <div className="ui hidden divider"></div>
           <Option
-            option={this.props.choices[3]}
-            correctAnswer={checkCorrectAnswer(3, this.props.correctChoice)}
+            option={choices[3]}
+            correctAnswer={checkCorrectAnswer(3, correctChoice)}
           />
         </div>
       );
